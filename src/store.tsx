@@ -21,9 +21,12 @@ export type PureActionFactoryParameter<S> = (setState: StateUpdater<S>, getState
 export function createAction<T, S>(action: ActionFactoryParameter<T, S>): (param :T) => Action<S> {
   return (param: T) => (setState: StateUpdater<S>, getState: StateReader<S>, dispatch: Dispatcher<S>) => action(param, setState, getState, dispatch)
 }
+
 export function createPureAction<S>(action: PureActionFactoryParameter<S>): () => Action<S> {
   return () => (setState: StateUpdater<S>, getState: StateReader<S>, dispatch: Dispatcher<S>) => action(setState, getState, dispatch)
 }
+
+export const connect = <T, State>(mapping: (state: State, dispatch: Dispatcher<State>) => T) => ( mapping )
 
 /**
  * Create a new store, and returns the context and the component to create. Once created, the component will propagate in React's context

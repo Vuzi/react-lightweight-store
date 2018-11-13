@@ -12,9 +12,6 @@
   "files": [
     "lib"
   ],
-  "dependencies": {
-    "react": "16.6.3"
-  },
   "jest": {
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
@@ -25,7 +22,11 @@
     ],
     "testRegex": "test/^.+\\.tsx$"
   },
+  "dependencies": {
+    "react": "16.6.3"
+  },
   "devDependencies": {
+    "@types/react": "^16.7.4",
     "@types/jest": "^23.3.9",
     "jest": "^23.6.0",
     "ts-jest": "^23.10.4",
