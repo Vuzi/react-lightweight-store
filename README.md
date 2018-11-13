@@ -36,8 +36,12 @@ export const {
 
 // Export some actions on our state
 export const actions = {
-  updateValue: createAction<string, State>((newValue, setState) => setState({ value: newValue }))
-  incrementCounter: createPureAction<State>((setState) => setState(state => ({ counter: state.counter + 1 })))
+  updateValue: createAction<string, State>((newValue, setState) => {
+    setState({ value: newValue })
+  }),
+  incrementCounter: createPureAction<State>((setState) => {
+    setState(state => ({ counter: state.counter + 1 }))
+  })
 }
 
 ```
@@ -81,8 +85,8 @@ const mappedProps =
   connect((state, dispatch) => ({
     counter: state.counter,
     value: state.value,
-    onUpdateValue: (newValue: string) => dispatch(updateValue(newValue)), // Dispatch is provided to dispatch actions to the store
-    onIncrementCounter: () => dispatch(incrementCounter())
+    onUpdateValue: (newValue: string) => dispatch(actions.updateValue(newValue)), // Dispatch is provided to dispatch actions to the store
+    onIncrementCounter: () => dispatch(actions.incrementCounter())
   }))
 
 const TestWithStore = withStore(Test, mappedProps)
