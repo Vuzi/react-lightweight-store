@@ -1,0 +1,45 @@
+{
+  "name": "react-lightweight-store",
+  "version": "0.1.0",
+  "description": "Lightweight react store built on top of the context API",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "react": "16.6.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testRegex": "test/^.+\\.tsx$"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.4",
+    "typescript": "3.1.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vuzi/react-lightweight-store.git"
+  },
+  "keywords": [],
+  "author": "Vuzi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vuzi/react-lightweight-store/issues"
+  },
+  "homepage": "https://github.com/Vuzi/react-lightweight-store#readme"
+}
