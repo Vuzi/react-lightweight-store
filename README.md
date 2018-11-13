@@ -30,8 +30,8 @@ const initialState: State = {
 // We need to build our store using our initial state
 export const {
   Store,     // The dispatcher
-  withStore, // High order component to inject store element into an element props using connect
-  connect    // Allow to define a mapping to plug together the store and a component
+  withStore, // High order component to inject the store
+  connect    // Allow to define a mapping with the store
 } = createStore(initialState)
 
 // Export some actions on our state
@@ -46,7 +46,7 @@ export const actions = {
 
 ```
 
-Then, we can use this store with a react-component:
+Then, we can use this store with a React component:
 
 ```typescript
 import { Store, withStore, connect, actions } from './mystore.ts'
