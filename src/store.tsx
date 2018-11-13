@@ -11,11 +11,11 @@ export type StateReader<S> = () => Readonly<S>
 export type Dispatcher<S> = (action: Action<S>) => Promise<S>
 
 // Actions type
-export type Action<S> = (setState: StateUpdater<S>, getState: StateReader<S>, dispatch: Dispatcher<S>) => void | Promise<void>
+export type Action<S> = (setState: StateUpdater<S>, getState: StateReader<S>, dispatch: Dispatcher<S>) => any | Promise<any>
 export type ActionFactory<T, S> = (param :T) => Action<S>
 export type PureActionFactory<S> = () => Action<S>
-export type ActionFactoryParameter<T, S> = (param :T, setState: StateUpdater<S>, getState: StateReader<S>, dispatch: Dispatcher<S>) => void | Promise<void>
-export type PureActionFactoryParameter<S> = (setState: StateUpdater<S>, getState: StateReader<S>, dispatch: Dispatcher<S>) => void | Promise<void>
+export type ActionFactoryParameter<T, S> = (param :T, setState: StateUpdater<S>, getState: StateReader<S>, dispatch: Dispatcher<S>) => any | Promise<any>
+export type PureActionFactoryParameter<S> = (setState: StateUpdater<S>, getState: StateReader<S>, dispatch: Dispatcher<S>) => any | Promise<any>
 
 // Helper to create actions
 export function createAction<T, S>(action: ActionFactoryParameter<T, S>): (param :T) => Action<S> {
@@ -112,7 +112,8 @@ export function createStore<S>(
 
   return {
     Store: provider,
-    withStore
+    withStore,
+    connect: <T,>(mapping: (state: S, dispatch: Dispatcher<S>) => T) => ( mapping )
   }
 
 }

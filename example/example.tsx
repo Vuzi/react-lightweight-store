@@ -1,20 +1,5 @@
-# React Lightweight Store
-
-Statically typed lightweight store for React, built on top of the React's Context API.
-
-
-## Installation
-
-```
-npm install react-lightweight-store --save
-```
-
-## Basic Usage
-
-The first step is to create a new store, with a typed state:
-
-```typescript
-import { createStore, createAction, createPureAction } from 'react-lightweight-store'
+import React, { Fragment } from 'react'
+import { createStore, createAction, createPureAction } from '../src/store'
 
 // Type of our state
 type State = {
@@ -28,24 +13,11 @@ const initialState: State = {
 }
 
 // We need to build our store using our initial state
-export const {
-  Store,     // The dispatcher
-  withStore, // High order component to inject store element into an element props using connect
-  connect    // Allow to define a mapping to plug together the store and a component
-} = createStore(initialState)
+const { Store, withStore, connect } = createStore(initialState)
 
-// Export some actions on our state
-export const actions = {
-  updateValue: createAction<string, State>((newValue, setState) => setState({ value: newValue }))
-  incrementCounter: createPureAction<State>((setState) => setState(state => ({ counter: state.counter + 1 })))
-}
-
-```
-
-Then, we can use this store with a react-component:
-
-```typescript
-import { Store, withStore, connect, actions } from './mystore.ts'
+// Define some actions on our state
+const updateValue      = createAction<string, State>((newValue, setState) => setState({ value: newValue }))
+const incrementCounter = createPureAction<State>((setState) => setState(state => ({ counter: state.counter + 1 })))
 
 // Props of our component
 type Props = {
@@ -93,5 +65,3 @@ const App = () => (
     <TestWithStore title="Hello there" />
   </Store>
 )
-
-```
